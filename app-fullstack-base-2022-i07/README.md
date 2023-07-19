@@ -19,16 +19,6 @@ En caso que quieras instalar las herramientas en otra plataforma o tengas algún
 
 Continua con la descarga del código cuando tengas las dependencias instaladas y funcionando.
 
-### Descargar el código
-
-Para descargar el código, lo más conveniente es que realices un `fork` de este proyecto a tu cuenta personal haciendo click en [este link](https://github.com/gotoiot/app-fullstack-base/fork). Una vez que ya tengas el fork a tu cuenta, descargalo con este comando (acordate de poner tu usuario en el link):
-
-```
-git clone https://github.com/USER/app-fullstack-base.git
-```
-
-> En caso que no tengas una cuenta en Github podes clonar directamente este repo.
-
 ### Ejecutar la aplicación
 
 Para ejecutar la aplicación tenes que correr el comando `docker compose up` desde la raíz del proyecto. Este comando va a descargar las imágenes de Docker de node, de typescript, de la base datos y del admin de la DB, y luego ponerlas en funcionamiento. 
