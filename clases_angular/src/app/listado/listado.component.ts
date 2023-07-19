@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LoggerService } from '../services/logger.service';
 import { ListadoDispositivoService } from '../services/listado-dispositivo.service';
 import { Dispositivo } from '../interfaces/dispositivo';
@@ -9,7 +9,11 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors,
   templateUrl: './listado.component.html',
   styleUrls: ['./listado.component.css']
 })
-export class ListadoComponent {
+export class ListadoComponent implements OnInit {
+
+  ngOnInit(): void {
+    
+  }
 
   constructor(
     private loggerService: LoggerService,
@@ -21,48 +25,51 @@ export class ListadoComponent {
   // numeroTarjeta: string = ''
   // number: number = 2
 
-  // listado: Dispositivo[] = this.listadoDispositivoService.getListadoDispositivos()
+  listado: Dispositivo[] = this.listadoDispositivoService.getListadoDispositivos()
 
+  manejador (event: any) {
+    console.log(event)
+  }
   // changeState (string: string) {
   //   this.buttonState = !this.buttonState
   //   this.loggerService.logWarning(string)
   //   this.loggerService.log(this.listadoDispositivoService.getListadoDispositivos())
   // }
 
-  name: FormControl = new FormControl("", [Validators.required, Validators.maxLength(4)])
+  // name: FormControl = new FormControl("", [Validators.required, Validators.maxLength(4)])
 
-  loginForm: FormGroup = new FormGroup({
-    user: new FormControl("", [Validators.required]),
-    pass: new FormControl("", [Validators.required])
-  })
+  // loginForm: FormGroup = new FormGroup({
+  //   user: new FormControl("", [Validators.required]),
+  //   pass: new FormControl("", [Validators.required])
+  // })
 
-  onSubmit() {
-    console.log(this.loginForm.value)
-    console.log(this.regForm.get('firstName')?.value)
-  }
+  // onSubmit() {
+  //   console.log(this.loginForm.value)
+  //   console.log(this.regForm.get('firstName')?.value)
+  // }
 
-  regForm = new FormBuilder().group({
-    firstName: ["", [Validators.required, Validators.maxLength(8)]],
-    lastName: ["", [Validators.required, Validators.maxLength(12)]],
-    email: ["", [Validators.required, Validators.email]],
-    pass: ["", [Validators.required, passwordValidator()]]
-  })
+  // regForm = new FormBuilder().group({
+  //   firstName: ["", [Validators.required, Validators.maxLength(8)]],
+  //   lastName: ["", [Validators.required, Validators.maxLength(12)]],
+  //   email: ["", [Validators.required, Validators.email]],
+  //   pass: ["", [Validators.required, passwordValidator()]]
+  // })
 }
 
-export function passwordValidator (): ValidatorFn {
-  return (control: AbstractControl): ValidationErrors | null => {
-    const value = control.value
+// export function passwordValidator (): ValidatorFn {
+//   return (control: AbstractControl): ValidationErrors | null => {
+//     const value = control.value
 
-    if (!value) {
-      return null
-    }
+//     if (!value) {
+//       return null
+//     }
 
-    const hasUpperCase = /[A-Z]+/.test(value)
-    const hasLowerCase = /[a-z]+/.test(value)
-    const hasNumber = /[0-9]+/.test(value)
+//     const hasUpperCase = /[A-Z]+/.test(value)
+//     const hasLowerCase = /[a-z]+/.test(value)
+//     const hasNumber = /[0-9]+/.test(value)
 
-    const passwordValid = hasUpperCase && hasLowerCase && hasNumber
+//     const passwordValid = hasUpperCase && hasLowerCase && hasNumber
 
-    return !passwordValid ? {passwordStrength:true} : null
-  }
-}
+//     return !passwordValid ? {passwordStrength:true} : null
+//   }
+// }
