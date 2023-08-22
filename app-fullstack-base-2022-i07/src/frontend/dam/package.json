@@ -29,7 +29,8 @@
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4",
-    "highcharts": "~10.1.0"
+    "highcharts": "~10.1.0",
+    "jsonwebtoken": "~9.0.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^15.0.0",
