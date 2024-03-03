@@ -1,7 +1,0 @@
-{
-  "name": "dam",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular"
-}
