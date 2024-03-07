@@ -1,10 +1,26 @@
 <p>listado works!</p>
 
+<div>{{ number | elevar:3:2 }}</div>
 <div>{{ texto }}</div>
 
 <input [(ngModel)]="numeroTarjeta">
 <div>{{ numeroTarjeta }}</div>
 
-<button (click)="changeState('sarasa')">Boton 2</button>
+<button (click)="changeState(texto)">Boton 2</button>
 
 <button [disabled]="buttonState">Boton 1</button>
+
+<div appColorear>texto a colorear</div>
+
+
+<div *ngIf="buttonState; else condicionElse">texto condicional</div>
+<ng-template #condicionElse><div>texto</div></ng-template>
+
+<ng-template [ngIf]="buttonState"><div>texto condicional</div></ng-template>
+
+<div *ngFor="let dispositivo of listado; let i = index">
+    <p>Dispositivo: {{ dispositivo.name }} Index: {{ i }}</p>
+    <p>Ubicación: {{ dispositivo.location }}</p>
+</div>
+
+<div>texto</div>
