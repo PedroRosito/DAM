@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListadoComponent } from './listado.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoggerService } from '../services/logger.service';
 import { ElevarPipe } from '../pipes/elevar.pipe';
 import { ColorearDirective } from '../directives/colorear.directive';
@@ -11,7 +11,8 @@ import { ColorearDirective } from '../directives/colorear.directive';
   declarations: [ListadoComponent, ElevarPipe, ColorearDirective],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [ListadoComponent],
   providers: [LoggerService]
