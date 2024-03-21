@@ -40,7 +40,7 @@
     <button type="submit">Submit</button>
 </form> -->
 
-<form [formGroup]="regForm" (ngSubmit)="onSubmit()">
+<!-- <form [formGroup]="regForm" (ngSubmit)="onSubmit()">
     <label for="firstName">First Name: </label>
     <input type="text" formControlName="firstName">
     <div class="error" *ngIf="regForm.controls.firstName.invalid && regForm.controls.firstName.touched && regForm.controls.firstName.dirty">
@@ -59,4 +59,8 @@
         La contraseña es requerida y debe tener al menos una minúscula, una mayúscula y un número
     </div>
     <button type="submit" [disabled]="regForm.invalid">Submit</button>
-</form>
+</form> -->
+
+<div *ngFor="let elemento of listado">
+    <app-dispositivo [dispositivo]="elemento" (onChange)="manejador($event)"></app-dispositivo>
+</div>

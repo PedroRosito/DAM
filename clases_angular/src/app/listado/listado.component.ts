@@ -19,7 +19,11 @@ export class ListadoComponent {
   // buttonState: boolean = true
   // number: number = 2
 
-  // listado: Dispositivo[] = this.listadoDispositivosService.getListadoDispositivos()
+  listado: Dispositivo[] = this.listadoDispositivosService.getListadoDispositivos()
+
+  manejador (eventData: any) {
+    console.log(eventData)
+  }
 
   // changeState (string: string) {
   //   this.buttonState = !this.buttonState
@@ -27,40 +31,40 @@ export class ListadoComponent {
   //   this.loggerService.logError('Hubo un error')
   // }
 
-  name: FormControl = new FormControl("", [Validators.required])
+  // name: FormControl = new FormControl("", [Validators.required])
 
-  loginForm: FormGroup = new FormGroup({
-    user: new FormControl("", [Validators.required]),
-    pass: new FormControl("", [Validators.required])
-  })
+  // loginForm: FormGroup = new FormGroup({
+  //   user: new FormControl("", [Validators.required]),
+  //   pass: new FormControl("", [Validators.required])
+  // })
 
-  onSubmit() {
-    console.log(this.loginForm.value)
-    console.log(this.regForm.get('firstName')?.value)
-  }
+  // onSubmit() {
+  //   console.log(this.loginForm.value)
+  //   console.log(this.regForm.get('firstName')?.value)
+  // }
 
-  regForm = new FormBuilder().group({
-    firstName: ["", [Validators.required, Validators.maxLength(8)]],
-    lastName: ["", [Validators.required, Validators.minLength(2)]],
-    email: ["", [Validators.required, Validators.email]],
-    pass: ["", [Validators.required, passwordValidator()]]
-  })
+  // regForm = new FormBuilder().group({
+  //   firstName: ["", [Validators.required, Validators.maxLength(8)]],
+  //   lastName: ["", [Validators.required, Validators.minLength(2)]],
+  //   email: ["", [Validators.required, Validators.email]],
+  //   pass: ["", [Validators.required, passwordValidator()]]
+  // })
 }
 
-export function passwordValidator (): ValidatorFn {
-  return (control: AbstractControl): ValidationErrors | null => {
-    const value = control.value
+// export function passwordValidator (): ValidatorFn {
+//   return (control: AbstractControl): ValidationErrors | null => {
+//     const value = control.value
 
-    if (!value) {
-      return null
-    }
+//     if (!value) {
+//       return null
+//     }
 
-    const hasUpperCase = /[A-Z]+/.test(value)
-    const hasLowerCase = /[a-z]+/.test(value)
-    const hasNumber = /[0-9]+/.test(value)
+//     const hasUpperCase = /[A-Z]+/.test(value)
+//     const hasLowerCase = /[a-z]+/.test(value)
+//     const hasNumber = /[0-9]+/.test(value)
 
-    const passwordValid = hasUpperCase && hasLowerCase && hasNumber
+//     const passwordValid = hasUpperCase && hasLowerCase && hasNumber
 
-    return !passwordValid ? {passwordStrength:true} : null
-  }
-}
+//     return !passwordValid ? {passwordStrength:true} : null
+//   }
+// }
