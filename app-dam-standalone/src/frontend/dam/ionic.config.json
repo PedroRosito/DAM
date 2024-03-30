@@ -1,0 +1,7 @@
+{
+  "name": "frontend-dam-standalone",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
