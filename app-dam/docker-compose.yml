@@ -1,0 +1,61 @@
+version: '0.1'
+
+services:
+
+    ionic-ui:
+      build:
+        context:                ./src/frontend/dam
+        dockerfile:             Dockerfile
+      ports:
+        -                       "8100:8100"
+      container_name:           ionic-ui
+      volumes:
+         -                      ./src/frontend/dam:/src/frontend/dam
+         -                      /src/frontend/dam/node_modules
+      command:                  ionic serve --external
+
+    mysql-server:
+        image:                   mysql:5.7
+        hostname:                mysql-server
+        environment:
+            MYSQL_ROOT_PASSWORD: userpass
+        container_name:          mysql-server
+        volumes:
+            -                    ./db/dumps:/docker-entrypoint-initdb.d
+            -                    ./db/data:/var/lib/mysql
+        networks:
+            -                    app-fullstack-net
+        ports:
+            -                    "3306:3306"
+
+    mysql-admin:
+        image:                   phpmyadmin/phpmyadmin
+        environment: 
+            PMA_HOST:            mysql-server
+            PMA_PORT:            3306
+            MYSQL_ROOT_PASSWORD: userpass
+        container_name:          mysql-admin
+        networks:
+            -                    app-fullstack-net
+        depends_on:
+            -                    mysql-server
+        ports:
+            -                    "8001:80"
+
+    node-backend:
+        image:                   abassi/nodejs-server:10.0-dev
+        container_name:          node-backend
+        volumes:
+            -                    ./src/backend:/home/node/app/src
+            -                    ./src/frontend:/home/node/app/static
+        networks:
+            -                    app-fullstack-net
+        depends_on:
+            -                    mysql-server
+        ports: 
+            -                    "8000:3000"
+        command:                 nodemon /home/node/app/src/index.js
+
+networks:
+    app-fullstack-net:
+        driver:                  bridge
