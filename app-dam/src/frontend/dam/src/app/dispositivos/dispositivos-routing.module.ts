@@ -5,7 +5,11 @@ import { DispositivosPage } from './dispositivos.page';
 
 const routes: Routes = [
   {
-    path: '',
+    path: '', // /dispositivos
+    component: DispositivosPage
+  },
+  {
+    path: ':id', // /dispositivos/1
     component: DispositivosPage
   }
 ];

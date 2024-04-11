@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription, fromEvent, interval, map } from 'rxjs';
 import { DispositivoService } from '../services/dispositivo.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-dispositivos',
@@ -10,16 +11,17 @@ import { DispositivoService } from '../services/dispositivo.service';
 export class DispositivosPage implements OnInit, OnDestroy {
 
   observable$: Observable<any>
-  subscription: Subscription
+  // subscription: Subscription
 
-  constructor(private _dispositivoService: DispositivoService) {
+  constructor(private _dispositivoService: DispositivoService,
+    private _actRouter: ActivatedRoute) {
     this.observable$ = interval(1000)
 
     const valuePlusTen$ = this.observable$.pipe(map((val) => val+10))
 
-    this.subscription = valuePlusTen$.subscribe((value) => {
-      console.log(value)
-    })
+    // this.subscription = valuePlusTen$.subscribe((value) => {
+    //   console.log(value)
+    // })
   }
 
   async ngOnInit() {
@@ -33,24 +35,38 @@ export class DispositivosPage implements OnInit, OnDestroy {
     console.log('Me ejecuto primero')
   }
 
-  mouseMove$ = fromEvent(document, 'mousemove')
+  ionViewWillEnter () {
+    console.log(`Me llegó el id: ${Number(this._actRouter.snapshot.paramMap.get('id'))}`)
+  }
 
-  subscriptionMouseMove = this.mouseMove$.subscribe((evt: any) => {
-    console.log(`Coords: ${evt.clientX} X ${evt.clientY} Y`)
-  })
+  // mouseMove$ = fromEvent(document, 'mousemove')
+
+  // subscriptionMouseMove = this.mouseMove$.subscribe((evt: any) => {
+  //   console.log(`Coords: ${evt.clientX} X ${evt.clientY} Y`)
+  // })
 
   subscribe () {
-    this.subscription = this.observable$.subscribe((value) => {
-      console.log(value)
-    })
+    // this.subscription = this.observable$.subscribe((value) => {
+    //   console.log(value)
+    // })
   }
 
   unsubscribe () {
-    this.subscription.unsubscribe()
+    // this.subscription.unsubscribe()
+  }
+
+  requestPrueba () {
+    this._dispositivoService.getPrueba()
+      .then((res) => {
+        console.log(res)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe()
-    this.subscriptionMouseMove.unsubscribe()
+    // this.subscription.unsubscribe()
+    // this.subscriptionMouseMove.unsubscribe()
   }
 }

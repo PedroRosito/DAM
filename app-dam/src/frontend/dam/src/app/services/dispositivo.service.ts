@@ -12,4 +12,8 @@ export class DispositivoService {
   getDispositivos (): Promise<any> {
     return firstValueFrom(this._http.get('http://localhost:8000/dispositivo'))
   }
+
+  getPrueba (): Promise<any> {
+    return firstValueFrom(this._http.get('http://localhost:8000/prueba'))
+  }
 }
