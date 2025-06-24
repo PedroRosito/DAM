@@ -16,14 +16,11 @@
         *ngSwitch
 
 ## Clase 03
-    Reactive Forms
-
-## Clase 04
     Comunicación entre componentes
     Ciclo de vida Angular
     App Híbridas vs Nativas
 
-## Clase 05
+## Clase 04
     Ionic
     Ciclo de vida ionic
     Ionic Native
@@ -31,7 +28,7 @@
     Rest vs SOAP
     Express - Middleware
 
-## Clase 06
+## Clase 05
     CORS
     MySql Pool
     Services con HTTP
@@ -39,15 +36,18 @@
     Promesas
     Async-Await
 
-## Clase 07
+## Clase 06
     Interceptors
     Guard
     Router
+
+## Clase 07
+    Reactive Forms
 
 ## Clase 08
     Realización y entrega de TP final
 
 ## Condición de aprobación
-    Entrega del trabajo final en la clase 8 (4/12/2024) o antes del (11/12/2024 23:59)
+    Entrega del trabajo final en la clase 8 (19/08/2025) o antes del (26/08/2025 23:59)
 
 > **Nota:** Los ejercicios resueltos y los de la clase se encuentran sin la carpeta node_modules, por lo tanto si desean correr alguno de ellos se deberán parar en la carpeta y ejecutar el comando **npm install**
