@@ -2,4 +2,28 @@
 
 <button [disabled]="buttonState" (click)="changeButtonState()">{{buttonText}}</button>
 
+<button (click)="getDispositivos()">Obtener dispositivos</button>
+
 <input type="text" [(ngModel)]="buttonText">
+
+<div appColorear>Elemento a colorear</div>
+
+<div appColorear>El2</div>
+
+<p>{{ number | elevar:2:1 }}</p>
+
+@if (buttonState) {
+    <p>Texto condicional</p>
+} @else {
+    <p>Texto condicional alternativo</p>
+}
+
+
+@for (dispositivo of dispositivos; track dispositivo.id; let e = $even) {
+    <p>{{ e }}</p>
+    <p>{{ dispositivo.id }}</p>
+    <p>{{ dispositivo.location }}</p>
+    <p>{{ dispositivo.name }}</p>
+} @empty {
+    <p>No hay dispositivos!</p>
+}

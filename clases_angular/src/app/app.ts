@@ -4,11 +4,10 @@ import { DispositivoComponent } from './dispositivo/dispositivo.component';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
   imports: [RouterOutlet, DispositivoComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  templateUrl: './app.html',
+  styleUrl: './app.css'
 })
-export class AppComponent {
-  title = 'Clases';
+export class App {
+  protected title = 'clases_angular';
 }
