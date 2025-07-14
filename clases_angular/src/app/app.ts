@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { DispositivoComponent } from './dispositivo/dispositivo.component';
+import { ListadoDispositivos } from './listado-dispositivos/listado-dispositivos';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, DispositivoComponent],
+  imports: [RouterOutlet, ListadoDispositivos],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

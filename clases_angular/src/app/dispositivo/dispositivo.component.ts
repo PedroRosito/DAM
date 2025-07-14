@@ -1,40 +1,26 @@
-import { Component, inject } from '@angular/core';
+import { Component, output, Input, input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Dispositivo } from '../services/dispositivo';
 import { DispositivoInterface } from '../interfaces/dispositivo';
-import { ElevarPipe } from '../pipes/elevar-pipe';
-import { Colorear } from '../directives/colorear';
 
 @Component({
   selector: 'app-dispositivo',
   standalone: true,
-  imports: [FormsModule, ElevarPipe, Colorear],
+  imports: [FormsModule],
   templateUrl: './dispositivo.component.html',
   styleUrl: './dispositivo.component.css'
 })
 export class DispositivoComponent {
-
-  buttonState: boolean
-  buttonText: string
-  dispositivos: DispositivoInterface[]
-  serviceDispositivo: Dispositivo
-  number: number
-
-  constructor () {
-    this.buttonState = false
-    this.buttonText = 'Habilitado'
-    this.dispositivos = []
-    this.serviceDispositivo = inject(Dispositivo)
-    this.number = 3
+  @Input()
+  dispositivo: DispositivoInterface = {
+    id: 0,
+    location: '',
+    name: ''
   }
 
-  changeButtonState () {
-    this.buttonState = !this.buttonState
-    this.buttonText = 'Deshabilitado'
-  }
+  onChange = output<any>()
 
-  getDispositivos () {
-    this.dispositivos = this.serviceDispositivo.getDispositivos()
-    console.log(this.dispositivos)
+  changeLocation () {
+    this.dispositivo.location = 'Nueva ubicación'
+    this.onChange.emit(this.dispositivo.location)
   }
 }

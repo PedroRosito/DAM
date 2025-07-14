@@ -1,0 +1,5 @@
+<button (click)="getDispositivos()">Obtener dispositivos</button>
+
+@for (dispositivo of dispositivos; track dispositivo.id) {
+    <app-dispositivo [dispositivo]="dispositivo" (onChange)="manejador($event)"></app-dispositivo>
+}
