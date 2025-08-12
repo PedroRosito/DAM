@@ -1,9 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton } from '@ionic/angular/standalone';
 import { interval, Observable, Subscription, fromEvent } from 'rxjs';
 import { DispositivoService } from '../services/dispositivo.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-listado-dispositivos',
@@ -20,7 +21,15 @@ export class ListadoDispositivosPage implements OnInit, OnDestroy {
 
   mouseMove$ = fromEvent(document, 'mousemove')
 
-  constructor(public dispositivoService: DispositivoService) {
+  @Input()
+  id = '';
+
+  ionViewWillEnter () {
+    console.log(this._actRouter.snapshot.paramMap.get('id'))
+  }
+
+  constructor(public dispositivoService: DispositivoService,
+              private _actRouter: ActivatedRoute) {
     this.observable$ = interval(1000)
     // this.subscription = this.observable$.subscribe((value) => {
     //   console.log(value)
