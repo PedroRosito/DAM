@@ -48,6 +48,6 @@
     Realización y entrega de TP final
 
 ## Condición de aprobación
-    Entrega del trabajo final en la clase 8 (19/08/2025) o antes del (26/08/2025 23:59)
+    Entrega del trabajo final en la clase 8 (20/08/2025) o antes del (27/08/2025 23:59)
 
 > **Nota:** Los ejercicios resueltos y los de la clase se encuentran sin la carpeta node_modules, por lo tanto si desean correr alguno de ellos se deberán parar en la carpeta y ejecutar el comando **npm install**
