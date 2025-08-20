@@ -1,6 +1,6 @@
 <div>
-    <p>Id: {{ dispositivo.id }}</p>
-    <p>Location: {{ dispositivo.location }}</p>
-    <p>Name: {{ dispositivo.name }}</p>
+    <p>Id: {{ dispositivo()?.id }}</p>
+    <p>Location: {{ dispositivo()?.location }}</p>
+    <p>Name: {{ dispositivo()?.name }}</p>
     <button (click)="changeLocation()">Change location</button>
 </div>

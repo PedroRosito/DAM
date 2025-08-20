@@ -1,10 +1,11 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, effect, Input, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton } from '@ionic/angular/standalone';
 import { interval, Observable, Subscription, fromEvent } from 'rxjs';
 import { DispositivoService } from '../services/dispositivo.service';
 import { ActivatedRoute } from '@angular/router';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-listado-dispositivos',
@@ -15,7 +16,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ListadoDispositivosPage implements OnInit, OnDestroy {
 
-  observable$: Observable<any>
+  observable$: Observable<any> = interval(1000)
+  counter = toSignal(this.observable$, { initialValue: 0 })
   // subscription: Subscription
   dispositivos: any = []
 
@@ -30,7 +32,9 @@ export class ListadoDispositivosPage implements OnInit, OnDestroy {
 
   constructor(public dispositivoService: DispositivoService,
               private _actRouter: ActivatedRoute) {
-    this.observable$ = interval(1000)
+    effect(() => {
+      console.log(`El valor de counter es: ${this.counter()}`)
+    })
     // this.subscription = this.observable$.subscribe((value) => {
     //   console.log(value)
     // })

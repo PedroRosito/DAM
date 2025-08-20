@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ListadoDispositivos } from './listado-dispositivos/listado-dispositivos';
+import { Forms } from './forms/forms';
+import { DispositivoComponent } from './dispositivo/dispositivo.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ListadoDispositivos],
+  imports: [RouterOutlet, DispositivoComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
