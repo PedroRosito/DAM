@@ -1,0 +1,39 @@
+<p>forms works!</p>
+
+<!-- <label for="firstName">Nombre:</label>
+<input type="text" [(ngModel)]="firstName">
+<label for="lastName">Apellido:</label>
+<input type="text" [(ngModel)]="lastName">
+
+<div>Nombre: {{ firstName }} | Apellido: {{ lastName }}</div> -->
+
+<!-- <label for="name">Name: </label>
+<input type="text" [formControl]="name">
+
+<div>Name: {{ name.value }}</div> -->
+
+<!-- <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <label for="user">User: </label>
+    <input type="text" formControlName="user">
+    <label for="password">Pass: </label>
+    <input type="password" formControlName="password">
+    <button type="submit">Submit</button>
+</form> -->
+
+<form [formGroup]="regForm" (ngSubmit)="onSubmit()">
+    <label for="firstName">First name:</label>
+    <input type="text" formControlName="firstName">
+    @if (regForm.controls.firstName.invalid && regForm.controls.firstName.touched && regForm.controls.firstName.pristine) {
+        <small class="error">El campo firstName es requerido.</small>
+    }
+    @if (regForm.controls.firstName.invalid && regForm.controls.firstName.dirty) {
+        <small class="error">El campo firstName debe tener menos de 10 caracteres.</small>
+    }
+    <label for="lastName">Last name:</label>
+    <input type="text" formControlName="lastName">
+    <label for="email">Email:</label>
+    <input type="text" formControlName="email">
+    <label for="password">Pass:</label>
+    <input type="text" formControlName="password">
+    <button type="submit" [disabled]="regForm.invalid">Submit</button>
+</form>
